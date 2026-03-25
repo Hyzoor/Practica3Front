@@ -1,0 +1,32 @@
+.home-container {
+  width: 80%;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.home-container h1 {
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.home-container button {
+	width: 100%;             
+	max-width: 200px;       
+	padding: 0.8rem 0;   
+	margin: 1rem auto 0;
+	border: none;
+	border-radius: 8px;
+	background: rgba(51, 51, 51, 0.3);
+	color: white;
+	cursor: pointer;
+}
+
+.home-container button:hover {
+	transform: translateY(-2px);
+	background: #dba6c3;
+	color: #333;
+}

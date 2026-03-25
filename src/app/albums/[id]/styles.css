@@ -1,0 +1,55 @@
+
+.album-info-container{
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.image-info-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+
+	margin: 2rem auto;
+	padding: 2rem;
+	border-radius: 20px;
+
+	background: rgba(255, 255, 255, 0.12);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+	color: #333;
+	text-align: center;
+}
+
+.info-text-container {
+	width: 60%;
+	font-size: 1.2rem;	
+}
+
+.image-info-container img {
+	width: 40%;
+	object-fit: cover; 
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	margin-bottom: 1.5rem;
+}
+
+
+.album-info-container button {
+	width: 50%;
+	margin: 2rem auto;
+	padding: 0.8rem 1.5rem;
+	border-radius: 12px;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1.4rem;
+	background: rgba(51, 51, 51, 0.3);
+	color: white;
+}
+
+button:hover {
+	transform: translateY(-2px);
+	background: #dba6c3;
+	color: #333;
+}

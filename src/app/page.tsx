@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation";
+import "./page.css"
 
 const Home = () => {
 
@@ -9,7 +10,7 @@ const Home = () => {
 
 	return (
 
-		<div>
+		<div className="home-container">
 			
 			<h1> Is there anybody going to listen to my story </h1>
 			

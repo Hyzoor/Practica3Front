@@ -3,7 +3,7 @@ import { api } from "./axios";
 
 
 export const getAlbumsByArtistName = async (artist: string) => {
-	const response = await api.get(`search?term=${artist}&entity=album&limit=20`);
+	const response = await api.get(`search?term=${artist}&entity=album`);
 	return response.data.results;
 }
 

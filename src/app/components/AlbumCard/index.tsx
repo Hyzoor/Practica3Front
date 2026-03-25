@@ -1,15 +1,31 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getAlbumById} from "@/lib/albums";
+import { getAlbumById } from "@/lib/albums";
 import { Album } from "@/types";
 
-const AlbumCard = (params: { idAlbum?: number }) => {
+import "./styles.css"
+import { useLista } from "@/context/MusicContext";
 
-	const idAlbum = params.idAlbum;
+interface AlbumCardParams {
+	idAlbum?: number;
+	showAddToFav?: boolean;
+	showRemoveFromFav?: boolean;
+}
+
+
+const AlbumCard = ({
+	idAlbum,
+	showAddToFav = false,
+	showRemoveFromFav = false
+}: AlbumCardParams) => {
+
 	const router = useRouter();
 	const [album, setAlbum] = useState<Album | null>(null);
 	const [error, setError] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(true);
+
+
+	const { addToList, deleteFromList } = useLista();
 
 	useEffect(() => {
 
@@ -17,7 +33,7 @@ const AlbumCard = (params: { idAlbum?: number }) => {
 		console.log(idAlbum)
 		if (!album && idAlbum) {
 			getAlbumById(idAlbum)
-				.then((e) => {setAlbum(e); setError("")})
+				.then((e) => { setAlbum(e); setError("") })
 				.catch((e) => setError(e.message))
 				.finally(() => setLoading(false))
 		}
@@ -27,23 +43,37 @@ const AlbumCard = (params: { idAlbum?: number }) => {
 
 	return (
 
-		<div className="album-card" onClick={() => 
-
-			router.push("albums/" + album?.collectionId)}>
+		<div className="album-card">
 
 			{!error && !loading &&
-				
+
 				<>
 					<h1>{album?.collectionName}</h1>
 					<h2>{album?.artistName}</h2>
 					{album?.artworkUrl100 && <img src={album?.artworkUrl100} />}
-					<button> Agregar a favoritos </button>
+
+					<button onClick={() => router.push("albums/" + album?.collectionId)}>
+						Ver detalles
+					</button>
+
+					{showAddToFav &&
+						<button onClick={() => addToList(String(album?.collectionId))}>
+							Agregar a favoritos
+						</button>
+					}
+
+					{showRemoveFromFav &&
+						<button onClick={() => deleteFromList(String(album?.collectionId))}>
+							Eliminar de favoritos
+						</button>
+					}
 				</>
+
 			}
 
 
 			{error && <h3>Error: {error}</h3>}
-			{loading && album && <h2>Loading...</h2>}
+			{loading && <h2>Loading...</h2>}
 
 		</div >
 	)

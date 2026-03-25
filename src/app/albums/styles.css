@@ -1,0 +1,78 @@
+.main-container {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+}
+
+.main-container h1 {
+	text-align: center;
+	color: #333;
+}
+
+.search-container {
+	height: 50px;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin: 2rem auto;
+}
+
+.search-container input {
+	width: 100%;
+	height: 100%;
+	padding: 0.8rem 1rem;
+	border-radius: 12px;
+	border: none;
+	font-size: 2rem;
+}
+
+.album-cards-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+	width: 100%;
+}
+
+
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin: 2rem 0;
+}
+
+.pagination-container button {
+	width: 20%;
+	padding: 0.8rem 1.5rem;
+	border-radius: 12px;
+	border: none;
+	background: rgba(51, 51, 51, 0.3);
+	color: white;
+	cursor: pointer;
+}
+
+.pagination-container button:hover {
+	transform: translateY(-2px);
+	background: #dba6c3;
+	color: #333;
+}
+
+
+.search-container button {
+	width: 10%;
+	height: 100%;
+	padding: 0.8rem 0;
+	border: none;
+	border-radius: 8px;
+	background: rgba(51, 51, 51, 0.3);
+	color: white;
+	cursor: pointer;
+}
+
+.search-container button:hover {
+	transform: translateY(-2px);
+	background: #dba6c3;
+	color: #333;
+}
