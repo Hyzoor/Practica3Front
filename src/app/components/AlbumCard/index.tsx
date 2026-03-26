@@ -20,6 +20,8 @@ const AlbumCard = ({
 }: AlbumCardParams) => {
 
 	const router = useRouter();
+
+	const [added, setAdded] = useState<boolean>(false);
 	const [album, setAlbum] = useState<Album | null>(null);
 	const [error, setError] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(true);
@@ -56,11 +58,15 @@ const AlbumCard = ({
 						Ver detalles
 					</button>
 
-					{showAddToFav &&
-						<button onClick={() => addToList(String(album?.collectionId))}>
-							Agregar a favoritos
+					{showAddToFav && (
+						<button className={added ? "added" : ""}
+							onClick={() => {
+								addToList(String(album?.collectionId));
+								setAdded(true);
+							}}>
+							{added ? "Añadido nen" : "Agregar a favoritos"}
 						</button>
-					}
+					)}
 
 					{showRemoveFromFav &&
 						<button onClick={() => deleteFromList(String(album?.collectionId))}>

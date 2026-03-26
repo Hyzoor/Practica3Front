@@ -22,7 +22,7 @@
 
 .album-card h1 {
 	text-align: center;
-	color: white;
+	color: #5a3e4d;
 	font-size: 1.8rem;
 	margin-bottom: 1.5rem;
 }
@@ -36,9 +36,9 @@
 
 
 .album-card button {
-	width: 100%;             
-	max-width: 200px;       
-	padding: 0.8rem 0;   
+	width: 100%;
+	max-width: 200px;
+	padding: 0.8rem 0;
 	margin: 1rem auto 0;
 	border: none;
 	border-radius: 8px;
@@ -50,5 +50,10 @@
 .album-card button:hover {
 	transform: translateY(-2px);
 	background: #dba6c3;
+	color: #333;
+}
+
+.album-card button.added {
+	background: #a8e6cf;
 	color: #333;
 }

@@ -22,7 +22,7 @@ const searchAlbumsPage = () => {
 	// como tal por eso este arreglo algo cutre, ya que obtengo todos en la primera llamada 
 
 	const [page, setPage] = useState<number>(0);
-	const limitPerPage = 10;
+	const limitPerPage = 9;
 
 	const [name, setName] = useState<string>("");
 	const [finalName, setFinalName] = useState<string>("");
