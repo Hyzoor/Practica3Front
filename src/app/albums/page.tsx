@@ -83,7 +83,6 @@ const searchAlbumsPage = () => {
 				)}
 			</div>
 
-
 			<div className="album-cards-container">
 
 				{albums && !loading && albums.map((e) => {

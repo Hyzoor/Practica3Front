@@ -3,8 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLista } from "@/context/MusicContext";
-import { getAlbumById } from "@/lib/albums";
-import type { Album } from "@/types";
 import AlbumCard from "../components/AlbumCard";
 
 
@@ -18,28 +16,13 @@ const FavouritesAlbumsPage = () => {
 	const [page, setPage] = useState<number>(0);
 	const limitPerPage = 9;
 
-	const [albums, setAlbums] = useState<Album[]>([])
-	const [error, setError] = useState<string>("");
-	const [loading, setLoading] = useState<boolean>(true);
-
-	const fetchAlbumsPage = async () => {
-
-		const start = page * limitPerPage;
-		const end = start + limitPerPage;
-		const ids = lista.slice(start, end);
-
-		setLoading(true);
-
-		await Promise.all(ids.map((id) => getAlbumById(Number(id))))
-			.then((e) => { setAlbums(e); setError(""); })
-			.catch((e) => setError(e.message))
-			.finally(() => setLoading(false))
-
-	}
+	const [albumsInPage, setAlbumsInPage] = useState<string[]>([])
 
 	useEffect(() => {
 
-		fetchAlbumsPage();
+		const start = page * limitPerPage;
+		const end = start + limitPerPage;
+		setAlbumsInPage(lista.slice(start, end));
 
 	}, [page, lista])
 
@@ -63,15 +46,12 @@ const FavouritesAlbumsPage = () => {
 			</div>
 
 
-			{loading && <h2>Loading...</h2>}
-			{error && <h3>Error: {error}</h3>}
-
 			<div className="album-cards-container">
 
-				{albums && !loading && albums.map((e) => {
+				{albumsInPage && albumsInPage.map((id) => {
 					return <AlbumCard
-						key={e.collectionId}
-						idAlbum={e.collectionId}
+						key={id}
+						idAlbum={Number(id)}
 						showRemoveFromFav={true}
 					/>;
 				})}
